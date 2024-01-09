@@ -1,4 +1,6 @@
 import './App.css';
+
+
 import { Button } from './components/Button';
 import { Container } from './components/Container';
 import { Greet } from './components/Greet';
@@ -11,6 +13,13 @@ import { Status, StatusEnum } from './components/Status';
 import { LoggedIn } from './components/state/LoggedIn';
 import { User } from './components/state/User';
 import { Counter } from './components/state/Counter';
+
+import { ThemeContextProvider } from "./components/context/ThemeContext"
+import { Box } from './components/context/Box';
+import { AccountContextProvider } from './components/context/AccountContext';
+import { Account } from './components/context/Account';
+import { DomRef } from './components/ref/DomRef';
+
 
 function App() {
 
@@ -40,6 +49,7 @@ function App() {
 
   return (
     <div className="App">
+      <ThemeContextProvider>
       <Greet name="Berfin" isLoggedIn={true} />
       <Person person={personName} />
       <PersonList names={nameList} />
@@ -53,6 +63,12 @@ function App() {
       <LoggedIn />
       <User />
       <Counter />
+      <Box />
+      <AccountContextProvider>
+        <Account />
+      </AccountContextProvider>
+      <DomRef />
+      </ThemeContextProvider>
     </div>
   );
 }
